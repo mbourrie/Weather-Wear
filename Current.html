@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <div id="yer"></div>
+</head>
+<body>
+  <script>
+  //"https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/9d49ce804a591806a8699e85b69ee331/33.1434,-117.1661"
+
+  var lat = 33.1434;
+  var long = -117.1661;
+  var apiKey = "9d49ce804a591806a8699e85b69ee331";
+  //var exclude = "?exclude=minutely,hourly,daily,alerts,flags";
+  var url = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + apiKey + "/" + lat + "," + long;// + exclude;
+  fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    var poo = data.currently.apparentTemperature;
+    document.getElementById('yer').innerHTML = poo;
+  })
+
+  </script>
+
+</body>
+</html>
