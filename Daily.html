@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <div id="post"></div>
+  <p id="fat"></p>
+</head>
+<body>
+  <script>
+    var darksky = "https://api.darksky.net/forecast/";
+    var cors = "https://cors-anywhere.herokuapp.com/";
+    var key = "9d49ce804a591806a8699e85b69ee331/";
+    var lat = 33.1434;
+    var long = -117.1661;
+    var url = cors + darksky + key + lat + ',' + long;
+    console.log(url);
+
+    fetch(url)
+    .then((res) => {
+      if(res.ok){
+      //var del = JSON.parse(res.json());
+        return res.json();
+      }
+      else{
+        throw new Error('Bad HTTP!')
+      }
+    })
+    .then((slat) => {
+
+      //document.getElementById('fat').innerHTML = slat.currently.time;
+      //console.log(slat.currently.time);
+      //var son = JSON.stringify(slat.daily.data[0]);
+      console.log(slat.daily.data[0]);
+      //var high = document.body.innerHTML = slat.daily.data[0].apparentTemperatureHigh;
+      //console.log(slat.currently.apparentTemperature);
+      //document.body.innerHTML = high;
+
+      //document.getElementById('fat').innerHTML = slat.daily.data[0];
+      //document.getElementById('fat').innerHTML = slat.daily.data.apparentTemperatureHigh;
+      //document.getElementById('fat').innerHTML = slat.currently.apparentTemperature;
+    })
+    .catch((err) => {
+      console.log('ERROR', err.message);
+    })
+
+  </script>
+</body>
+</html>
